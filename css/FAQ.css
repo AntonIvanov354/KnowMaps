@@ -1,0 +1,130 @@
+/* Основные стили для меню */
+.menu1 {
+    background-color: rgb(4, 4, 4);/* Серый цвет фона для меню */
+    color: white; /* Цвет текста в меню белый */
+    padding: 5px; /* Отступы вокруг содержимого меню */
+    display: grid; /* Используем CSS Grid для компоновки элементов */
+    grid-template-columns: repeat(6, auto); /* Создаем 6 колонок с автоматической шириной */
+    align-items: center; /* Выравнивание элементов по центру по вертикали */
+    height: 70px; /* Высота меню */
+}
+
+/* Стили для тела страницы */
+body {
+    margin: 0; /* Убираем отступы по умолчанию у body */
+    background-color: rgb(4, 4, 4);
+}
+
+/* Стили для заголовка меню */
+.menu-head {
+    font-family: 'Courier New', Courier, monospace; /* Шрифт для заголовка меню */
+}
+/* Стили для пунктов меню */
+
+.KnowMap, .FAQ, .Nastr, .History, .Akkaynt {
+    font-size: 30px; /* Размер шрифта для пунктов меню */
+    text-align: center; /* Центрируем текст в пунктах меню */
+    justify-self: center; /* Выравнивание элементов по центру в сетке */
+    cursor: pointer; /* Указатель мыши при наведении на элемент */
+    transition: 1s; /* Плавный переход для эффектов при наведении */
+}
+
+/* Эффекты при наведении на пункты меню */
+.KnowMap:hover, /* Закомментированное правило для .nadpis-fail:hover */ 
+.FAQ:hover, .Nastr:hover, .History:hover, .Akkaynt:hover {
+    transform: scale(1.2); /* Увеличиваем размер элемента при наведении */
+}
+.faq_nadpis{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    margin: 0;
+    font-size: 50px;
+}
+.opisanie {
+    position: relative; /* Относительное позиционирование для вложенных элементов */
+    width: 100%; /* Ширина на всю ширину родителя */
+    max-height: 600px; /* Максимальная высота контейнера 600px */
+    overflow: hidden; /* Скрываем переполнение контейнера */
+}
+
+/* Стили для видео внутри контейнера описания */
+.vidio {
+    position: absolute; /* Абсолютное позиционирование для видео */
+    top: 50%; /* Центрируем видео по вертикали относительно родителя */
+    left: 50%; /* Центрируем видео по горизонтали относительно родителя */
+    min-width: 100%; /* Минимальная ширина видео 100% от родителя */
+    min-height: 100%; /* Минимальная высота видео 100% от родителя */
+    width: auto; /* Автоширина для сохранения пропорций видео */
+    height: auto; /* Автовысота для сохранения пропорций видео */
+    z-index: -1; /* Размещаем видео позади текста (низкий z-index) */
+    transform: translate(-50%, -50%); /* Центрируем видео по обоим осям */
+}
+
+/* Стили для текста поверх видео */
+.text_opisanie {
+    position: absolute; /* Абсолютное позиционирование для текста поверх видео */
+    top: 30%; /* Позиционирование текста от верхней границы родителя (30% вниз) */
+    left: 50%; /* Смещение текста по горизонтали (центр) */
+    transform: translate(-50%, -50%); /* Центрируем текст по обоим осям */
+    color: white; /* Цвет текста белый для контраста с фоном видео */
+    padding: 10px; /* Отступы вокруг текста для улучшения восприятия */
+    font-size: 30px; /* Размер шрифта для текста описания */
+    text-align: left; /* Центрирование текста внутри блока описания */
+    font-family:'Courier New', Courier, monospace;
+}
+.faq_vopros li{
+    color: white;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: auto;
+    margin: 40px;
+}
+.vopros_1, .vopros_2, .vopros_3, .vopros_4, .vopros_5{
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;  
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: black;
+    color: white;
+    z-index: 0;
+    position: relative;
+}
+.vopros_1::before, .vopros_2::before, .vopros_3::before, .vopros_4::before, .vopros_5::before{
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;  
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    animation: glowing 20s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border: radius 10px; 
+}
+.vopros_1:hover::before, .vopros_2:hover::before, .vopros_3:hover::before, .vopros_4:hover::before, .vopros_5:hover::before{
+    background: #ffffff;
+}
+.vopros_1::after, .vopros_2::after, .vopros_3::after, .vopros_4::after, .vopros_5::after{
+    content: '';
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+@keyframes glowing{
+    0% { background-position: 0 0; } /* Начальная позиция фона */
+    50% { background-position: 400% 0; } /* Позиция фона в середине анимации */
+    100% { background-position: 0 0; } /* Конечная позиция фона */
+}
