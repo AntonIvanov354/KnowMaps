@@ -78,7 +78,7 @@ body {
     animation: glowing 20s linear infinite;
     opacity: 1;
     transition: opacity .3s ease-in-out;
-    border: radius 10px; 
+    border-radius: 10px; 
 }
 .vopros_1:hover::before, .vopros_2:hover::before, .vopros_3:hover::before, .vopros_4:hover::before, .vopros_5:hover::before{
     background: #ffffff;    
@@ -112,7 +112,7 @@ body {
     position: relative;
     z-index: 0;
 }
-.otvet_1::before , .otvet_2::before, .otvet_3::before, .otvet_4::before, .otvet_5::before{
+.otvet_1_zamena::before , .otvet_2_zamena::before, .otvet_3_zamena::before, .otvet_4_zamena::before, .otvet_5_zamena::before{
     content:'';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
@@ -122,11 +122,50 @@ body {
     height: 4px;
     width: 105px;
     animation: glowing 20s linear infinite;
-    opacity: 0;
+    opacity: 1;
     transition: opacity .3s ease-in-out;
     border-radius: 10px;
 
 }
-.otvet_1:hover::before , .otvet_2:hover::before, .otvet_3:hover::before, .otvet_4:hover::before, .otvet_5:hover::before{
+/*.otvet_1:hover::before , .otvet_2:hover::before, .otvet_3:hover::before, .otvet_4:hover::before, .otvet_5:hover::before{
+    opacity: 1;
+}*/
+.sam_text_faq_1, .sam_text_faq_2, .sam_text_faq_3, .sam_text_faq_4, .sam_text_faq_5{
+    color: rgb(255, 255, 255);
+    font-size: 27px;
+    width: 1000px;
+    height: 70px;
+    background-color: rgb(0, 0, 0);
+    cursor: default;
+    border: none;
+    outline: none;
+    opacity: 0;
+    border-radius: 15px;
+}
+/*.sam_text_faq_1::before, .sam_text_faq_2::before, .sam_text_faq_3::before, .sam_text_faq_4::before, .sam_text_faq_5::before{
+    content: '';
+    background-color: white;
+    width: calc(100% + 7px);
+    height: calc(100% + 7px);
+    opacity: 0;
+    z-index: 3;
+    border-radius: 10px;
+    position: absolute;   
+    top: -10px;
+    left: -10px;
+    background-size: 400%;
+}*/
+/*.sam_text_faq_1:hover, .sam_text_faq_2:hover, .sam_text_faq_3:hover, .sam_text_faq_4:hover, .sam_text_faq_5:hover{
+    opacity: 0;
+    background-color: white;
+    border-radius: 10px;
+}*/
+.ul_text_fql{
+    position: absolute;
+    top: 120px;
+    left: 235px;
+    list-style-type: none;
+}
+.sam_text_faq_1_see{
     opacity: 1;
 }
