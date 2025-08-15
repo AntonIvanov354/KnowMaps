@@ -34,51 +34,22 @@ body {
 .FAQ:hover, .Nastr:hover, .History:hover, .Akkaynt:hover {
     transform: scale(1.2); /* Увеличиваем размер элемента при наведении */
 }
-.faq_nadpis{
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-    margin: 0;
-    font-size: 50px;
-}
-.opisanie {
-    position: relative; /* Относительное позиционирование для вложенных элементов */
-    width: 100%; /* Ширина на всю ширину родителя */
-    max-height: 600px; /* Максимальная высота контейнера 600px */
-    overflow: hidden; /* Скрываем переполнение контейнера */
-}
-
-/* Стили для видео внутри контейнера описания */
-.vidio {
-    position: absolute; /* Абсолютное позиционирование для видео */
-    top: 50%; /* Центрируем видео по вертикали относительно родителя */
-    left: 50%; /* Центрируем видео по горизонтали относительно родителя */
-    min-width: 100%; /* Минимальная ширина видео 100% от родителя */
-    min-height: 100%; /* Минимальная высота видео 100% от родителя */
-    width: auto; /* Автоширина для сохранения пропорций видео */
-    height: auto; /* Автовысота для сохранения пропорций видео */
-    z-index: -1; /* Размещаем видео позади текста (низкий z-index) */
-    transform: translate(-50%, -50%); /* Центрируем видео по обоим осям */
-}
-
-/* Стили для текста поверх видео */
-.text_opisanie {
-    position: absolute; /* Абсолютное позиционирование для текста поверх видео */
-    top: 30%; /* Позиционирование текста от верхней границы родителя (30% вниз) */
-    left: 50%; /* Смещение текста по горизонтали (центр) */
-    transform: translate(-50%, -50%); /* Центрируем текст по обоим осям */
-    color: white; /* Цвет текста белый для контраста с фоном видео */
-    padding: 10px; /* Отступы вокруг текста для улучшения восприятия */
-    font-size: 30px; /* Размер шрифта для текста описания */
-    text-align: left; /* Центрирование текста внутри блока описания */
-    font-family:'Courier New', Courier, monospace;
+.faq_vopros{
+    display: grid;
+    grid-template-columns: minmax(200px, 100px) 1fr;
 }
 .faq_vopros li{
     color: white;
     list-style-type: none;
-    display: grid;
-    grid-template-columns: auto;
     margin: 40px;
+}
+.fql_vorpos2{
+    color: white;
+    display: grid;
+    grid-template-rows: repeat(5, auto);
+    font-size: 10px;
+    place-items: left;
+    cursor: cell;
 }
 .vopros_1, .vopros_2, .vopros_3, .vopros_4, .vopros_5{
     width: 50px;
@@ -110,7 +81,7 @@ body {
     border: radius 10px; 
 }
 .vopros_1:hover::before, .vopros_2:hover::before, .vopros_3:hover::before, .vopros_4:hover::before, .vopros_5:hover::before{
-    background: #ffffff;
+    background: #ffffff;    
 }
 .vopros_1::after, .vopros_2::after, .vopros_3::after, .vopros_4::after, .vopros_5::after{
     content: '';
@@ -127,4 +98,35 @@ body {
     0% { background-position: 0 0; } /* Начальная позиция фона */
     50% { background-position: 400% 0; } /* Позиция фона в середине анимации */
     100% { background-position: 0 0; } /* Конечная позиция фона */
+}
+
+.otvet_1 , .otvet_2, .otvet_3, .otvet_4, .otvet_5{
+    font-size: 27px;
+    cursor: default;
+    width: 500px;
+    height: 30px;
+    background: black;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    position: relative;
+    z-index: 0;
+}
+.otvet_1::before , .otvet_2::before, .otvet_3::before, .otvet_4::before, .otvet_5::before{
+    content:'';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: 100%;
+    background-size: 400%;
+    z-index: -1;
+    height: 4px;
+    width: 105px;
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+
+}
+.otvet_1:hover::before , .otvet_2:hover::before, .otvet_3:hover::before, .otvet_4:hover::before, .otvet_5:hover::before{
+    opacity: 1;
 }

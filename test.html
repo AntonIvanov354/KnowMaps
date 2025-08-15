@@ -1,0 +1,31 @@
+<div class="vopros_1">Вопрос 1</div>
+<div class="vopros_2">Вопрос 2</div>
+<div class="vopros_3">Вопрос 3</div>
+<div class="vopros_4">Вопрос 4</div>
+<div class="vopros_5">Вопрос 5</div>
+
+<div class="otvet_1">Ответ 1</div>
+<div class="otvet_2">Ответ 2</div>
+<div class="otvet_3">Ответ 3</div>
+<div class="otvet_4">Ответ 4</div>
+<div class="otvet_5">Ответ 5</div>
+
+<style>
+    .otvet_1, .otvet_2, .otvet_3, .otvet_4, .otvet_5 {
+        transition: background-color 0.3s;
+    }
+    .highlight {
+        background-color: yellow;
+    }
+</style>
+
+<script>
+    document.querySelectorAll('.vopros_1, .vopros_2, .vopros_3, .vopros_4, .vopros_5').forEach((vopros, index) => {
+        vopros.addEventListener('mouseenter', () => {
+            document.querySelector(`.otvet_${index + 1}`).classList.add('highlight');
+        });
+        vopros.addEventListener('mouseleave', () => {
+            document.querySelector(`.otvet_${index + 1}`).classList.remove('highlight');
+        });
+    });
+</script>

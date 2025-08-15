@@ -50,15 +50,22 @@
         }
     });
 });*/
-document.addEventListener("DOMContentLoaded", function(){
-    const button = document.getElementById("button");
-    const okno_reg_2 = document.getElementById("okno_reg_2");
-    const okno_reg_3 = document.getElementById("okno_reg");
-    const itog_reg_div2 = document.getElementById("itog_reg_div");
+// Ждем, пока весь HTML-документ будет загружен и разобран
+document.addEventListener("DOMContentLoaded", function() {
+    // Получаем элементы из DOM по их ID
+    const button = document.getElementById("button"); // Кнопка для переключения
+    const okno_reg_2 = document.getElementById("okno_reg_2"); // Второе окно регистрации
+    const okno_reg_3 = document.getElementById("okno_reg"); // Первое окно регистрации
+    const itog_reg_div2 = document.getElementById("itog_reg_div"); // Итоговое окно регистрации
 
-    button.addEventListener("click", function(){
+    // Добавляем обработчик события на кнопку
+    button.addEventListener("click", function() {
+        // Переключаем класс для второго окна регистрации
         okno_reg_2.classList.toggle("okno_reg_3");
+        // Переключаем класс для итогового окна регистрации
         itog_reg_div2.classList.toggle("itog_reg_div2");
-        okno_reg_3.classList.toggle("okno_reg_itog")
+        // Переключаем класс для первого окна регистрации
+        okno_reg_3.classList.toggle("okno_reg_itog");
     });
-})
+});
+ 
