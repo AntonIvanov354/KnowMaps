@@ -47,7 +47,7 @@
         })
  })*/
 //})
-document.addEventListener("DOMContentLoaded", function(){
+/*document.addEventListener("DOMContentLoaded", function(){
     proverka_akkaynta()
         async function proverka_akkaynta() {
             let ip_user = null
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function(){
             if (!response.ok){
                 throw new Error(`ОШИБКА В ПОЛУЧЕНИИ ip-адреса ПОЛЬЗОВАТЕЛЯ: ${response.status}`)
             }*/
-           await fetch("https://api.ipify.org?format=json")
+          /* await fetch("https://api.ipify.org?format=json")
             .then(response => response.json())
             .then(data => {
                 ip_user = data.ip
@@ -101,4 +101,18 @@ document.addEventListener("DOMContentLoaded", function(){
             console.log("ОШИБКА")
         }*/
 
-});
+/*});*/
+
+
+function selectFile() {
+    const avatatfile = document.getElementById("avatar_file")
+    avatatfile.click()
+}
+function fileSelect(files) {
+    const file = files[0]
+
+    console.log("Что мы знаем о файле")
+    console.log("Размер: ", file.size)
+    console.log("Имя: ", file.name)
+    console.log("Тип: ", file.type)
+}

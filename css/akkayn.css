@@ -12,7 +12,7 @@
 /* Стили для тела страницы */
 body {
     margin: 0; /* Убираем отступы по умолчанию у body */
-    overflow: hidden; /* Скрываем любые полосы прокрутки */
+   
     background-color: rgb(4, 4, 4);
 }
 
@@ -45,4 +45,11 @@ body {
     cursor: pointer; /* Указатель мыши при наведении на кнопку */
     border: 2px solid #808080; /* Серый бордер вокруг кнопки */
     border-radius: 5px; /* Закругление углов кнопки */
+}
+/*работа с аватаркой*/
+.avatar img{
+    width: 100px;
+    height: 100px;
+    margin-left: 500px;
+    margin-top: 150px;
 }

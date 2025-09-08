@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/akkayn.css">
     <link rel="website icon" type="png" href="foto/logo__ved_sait.png">
 </head>
-<body>
+<img>
 <script src="./java/akkaynt.js"></script>
 
 <header id="menu-head" class="menu-head">
@@ -50,9 +50,14 @@
     </div>
 
     </div>-->
-    <button onclick="window.location.href=`vxod.html`">Вход</button>
-    <button onclick="window.location.href=`reg.html`">Регистрация</button>
-    <button id="knopka">фваыфвыв1</button>
-     <button id="knopka2">фваыфвыв2</button>
+  <!--  <button onclick="window.location.href=`vxod.html`">Вход</button>
+    <button onclick="window.location.href=`reg.html`">Регистрация</button>-->
+<main>
+    <div class="avatar">
+    <img onclick="selectFile()" src="./foto/profil.png" alt="аватарка" class="sama_avatar">
+    <input type="file" id="avatar_file" style="display: none;" onchange="fileSelect(this.files)">
+    </div>
+</main>
+
 </body>
 </html>
