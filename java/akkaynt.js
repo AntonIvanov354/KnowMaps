@@ -1,5 +1,4 @@
-/*document.addEventListener("DOMContentLoaded", function(){
-    const knopka = document.getElementById("knopka")
+    /*const knopka = document.getElementById("knopka")
     const knopka2 = document.getElementById("knopka2")
        /* fetch("http://127.0.0.1:8000/data-base/ip")
         .then(response => response.json())
@@ -104,7 +103,7 @@
 /*});*/
 
 
-function selectFile() {
+/*function selectFile() {
     const avatatfile = document.getElementById("avatar_file")
     avatatfile.click()
 }
@@ -115,4 +114,57 @@ function fileSelect(files) {
     console.log("Размер: ", file.size)
     console.log("Имя: ", file.name)
     console.log("Тип: ", file.type)
-}
+}*/
+document.addEventListener("DOMContentLoaded", async function(){
+    async function makeRequest(url, options = {}) {
+        const defaulOptions = {
+            method: "GET",
+            headers:  {
+                'Content-type': 'application/json',
+                'Accept': `application/json`
+            },
+        };
+
+        const MergeOptions = {
+            ...defaulOptions,
+            ...options,
+            headers: {
+                ...defaulOptions.headers,
+                ...options.headers
+            },
+        };
+
+        if(options.body && typeof options.body == `object`){
+            MergeOptions.body = JSON.stringify(options.body);
+        }
+
+        try{
+            const response = await fetch(url, MergeOptions)
+
+            if(!response.ok){
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+
+            try {
+                const data = await response.json()
+                return { success: true, data, status: response.status}
+            } catch(jsonError) {
+                const text = await response.text();
+                return { success: true, data: text, status: response.status}
+            }
+        }
+        catch (error){
+            return {
+                success:false,
+                error:error.message ,
+                status:error.status || 0 
+            }
+        }
+    }
+    const TheResultOfTheAppeal = await makeRequest("http://127.0.0.1:8000/aa")
+    if(TheResultOfTheAppeal.success){
+        console.log("Пользователь: ",TheResultOfTheAppeal.data)
+    } else {
+        console.log(TheResultOfTheAppeal.error)
+    }
+})

@@ -16,7 +16,11 @@ class DBModel(BaseModel):
 
 class checking_registration(BaseModel):
     ip: str
-
+data_base = {
+    "ip":"1.1.1.1",
+    "password":"12345",
+    "name":"abama"
+}
 #db_list: List[DBModel] = []
 
 app.add_middleware(
@@ -67,4 +71,8 @@ async def proverka_ip(item: checking_registration):
         print(f"Нет ошибка данные загрузили:{result}")
         return{"message:": result}
   #  except:
-      #  return{"message:" "Ошибка извлечения данных по ip адрему пользователя, повторите позже!"}
+      #  return{"message:" "Ошибка извлечения данных по ip адрему пользователя, повторите позже!"}\
+
+@app.get("/BaseGet")
+def BaseGet():
+    return {f"message: {data_base}"}
