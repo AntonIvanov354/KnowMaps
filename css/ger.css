@@ -37,14 +37,15 @@ body {
 }
 .okno_reg{
     border: 2px solid white;
-    width: 700px;
-    height: 700px;
+    width: 650px;
+    height: 600px;
     margin-top: 30px;
     border-radius: 10px;
     position: relative;
     z-index: 0;
     overflow: hidden;
     justify-self: center;
+    margin-left: 28%;
     
 }
 .okno_reg::before{
@@ -127,10 +128,7 @@ body {
     content: " ваш пароль:";
     color: black;
 }
-.nadpis_name::after{
-    content: "еди вашу почту:";
-    color: black;
-}
+
 
 /* шаман мид имба, но тут шаманим не над мидом, а над inputom)*/
 .nadpis_email_okno, .nadpis_password_okno, .nadpis_password2_okno, .nadpis_name_okno{
@@ -154,6 +152,7 @@ body {
     font-size: 17px;
     font-family: 'Courier New', Courier, monospace;
     /*sos*/
+    left: 70%;
     position: relative;
     z-index: 0;
     cursor: pointer;

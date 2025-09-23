@@ -51,7 +51,7 @@
     });
 });*/
 // Ждем, пока весь HTML-документ будет загружен и разобран
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", async function() {
     // Получаем элементы из DOM по их ID
     const button = document.getElementById("button"); // Кнопка для переключения
     const okno_reg_2 = document.getElementById("okno_reg_2"); // Второе окно регистрации
@@ -59,13 +59,91 @@ document.addEventListener("DOMContentLoaded", function() {
     const itog_reg_div2 = document.getElementById("itog_reg_div"); // Итоговое окно регистрации
 
     // Добавляем обработчик события на кнопку
-    button.addEventListener("click", function() {
-        // Переключаем класс для второго окна регистрации
-        okno_reg_2.classList.toggle("okno_reg_3");
-        // Переключаем класс для итогового окна регистрации
-        itog_reg_div2.classList.toggle("itog_reg_div2");
-        // Переключаем класс для первого окна регистрации
-        okno_reg_3.classList.toggle("okno_reg_itog");
+    button.addEventListener("click", async function() {
+        /*    // Переключаем класс для второго окна регистрации
+            okno_reg_2.classList.toggle("okno_reg_3");
+            // Переключаем класс для итогового окна регистрации
+            itog_reg_div2.classList.toggle("itog_reg_div2");
+            // Переключаем класс для первого окна регистрации
+            okno_reg_3.classList.toggle("okno_reg_itog");
+        });*/
+
+        async function makeRequest(url, options = {}) {
+            const defaultOptions = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "applocation/json",
+                    "Accept": "applocation/json"
+                }
+            };
+
+            const mergeOptionst = {
+                ...defaultOptions,
+                ...options,
+                headers: {
+                    ...defaultOptions.headers,
+                    ...options.headers
+                }
+            };
+
+            if(options.body && typeof options.body == `object`){
+                mergeOptionst.body = JSON.stringify(options.body)
+            }
+            try{
+                const response = await fetch(url, mergeOptionst)
+
+                if(!response.ok){
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+                }
+
+                try{
+                    const data = await response.json()
+                    return {success: true, data, status: response.status}
+                }catch(jsonError){
+                    const text = await response.text()
+                    return {success: true, daata: text, status: response.status}
+                }
+
+            } catch(error){
+                return {
+                    success: false,
+                    error: error.message,
+                    status: error.status || 0
+                }
+            }
+        }
+
+        const UserPassword = await document.getElementById("window_password").value
+        const UserPasswordReplay = await document.getElementById("window_password_replay").value
+        const UserEmail = await document.getElementById("window_email").value
+        if(UserPassword == UserPasswordReplay){
+            const NewUser = {
+                password: UserPassword,
+                replaypassword: UserPasswordReplay,
+                email: UserEmail
+            }
+            try{
+                const CreatNewUser = await makeRequest("https://127.0.0.1:8000/CreateUser", {
+                    method: "POST",
+                    body: NewUser
+                })
+                if(CreatNewUser.success){
+                    okno_reg_2.classList.toggle("okno_reg_3");
+                    // Переключаем класс для итогового окна регистрации
+                    itog_reg_div2.classList.toggle("itog_reg_div2");
+                    // Переключаем класс для первого окна регистрации
+                    okno_reg_3.classList.toggle("okno_reg_itog");
+                }
+                else{
+                    alert("Ошибка Создания: ", CreatNewUser.error)
+                } }
+            catch (error) {
+                alert("Ошибка выполнения: ", error)
+            }      
+        }
+        else{
+            alert(`Error: Password ≠ Password replay`)
+        }
     });
 });
  
