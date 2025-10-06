@@ -45,6 +45,7 @@ body {
     z-index: 0;
     overflow: hidden;
     justify-self: center;
+    left: 30%;
     
 }
 .okno_reg::before{
@@ -143,7 +144,7 @@ body {
     display: grid;
     grid-template-columns: auto;
     justify-self: right;
-    right: 30px;
+    margin: 10px;
     top: 40px;
     height: 50px;
     width: 220px;

@@ -116,7 +116,10 @@ function fileSelect(files) {
     console.log("Тип: ", file.type)
 }*/
 document.addEventListener("DOMContentLoaded", async function(){
-    async function makeRequest(url, options = {}) {
+    async function checkuserreg(UserCookiIdAkk) {
+        if()
+    }
+   /* async function makeRequest(url, options = {}) {
         const defaulOptions = {
             method: "GET",
             headers:  {
@@ -166,5 +169,5 @@ document.addEventListener("DOMContentLoaded", async function(){
         console.log("Пользователь: ",TheResultOfTheAppeal.data)
     } else {
         console.log(TheResultOfTheAppeal.error)
-    }
+    }*/
 })
