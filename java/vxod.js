@@ -1,5 +1,7 @@
-
 document.addEventListener("DOMContentLoaded",  async function() {
+
+    const url = "http://127.0.0.1:8000/api/users"
+    const printIdCooki = JSON.parse(localStorage.getItem("idcooki") || `{"id": null}`)
 
     const knopka_potverdit_vxod = document.getElementById("knopka_potverdit_vxod");
     const okno_vxoda_osnova = document.getElementById("okno_vxoda_osnova");
@@ -55,28 +57,41 @@ document.addEventListener("DOMContentLoaded",  async function() {
     }
     const Password_hash= await document.getElementById("window_password").value
     const UserEmail = await document.getElementById("window_email").value
+
     const LoginUser = {
         password: Password_hash,
         email: UserEmail
     }
 
     try{
-    const result  = await LoginInformation("http://127.0.0.1:8000/login/users", {
-        method: "POST",
-        body: LoginUser
-    })
-    if(result.success){
+        const result  = await LoginInformation(url, {
+            method: "POST",
+            body: LoginUser
+        })
 
-        okno_vxoda_osnova.classList.toggle("okno_vxoda_osnova_itog");
-        okno_vxod_osnova_2.classList.toggle("okno_vxod_osnova_1")
-        nadpis_yspex2.classList.toggle("nadpis_yspex2")
+        if(result.success){
 
-        alert(result.message)
+            localStorage.setItem("idcooki", JSON.stringify({
+                id: result.data.user.cooki
+            }))
+            alert("обновил данные: "+ result.data.message)
+            alert(printIdCooki.id)
 
+            okno_vxoda_osnova.classList.toggle("okno_vxoda_osnova_itog");
+            okno_vxod_osnova_2.classList.toggle("okno_vxod_osnova_1")
+            nadpis_yspex2.classList.toggle("nadpis_yspex2")
+          //  }
+            //else if(printIdCooki !== result.data.user.cooki){
 
-    } else{
-        alert("Ошибка создания: ", result .error)
-    } 
+             //   localStorage.setItem("idcooki", JSON.stringify({
+               //     id: result.data.user.id
+               // }))
+
+               // alert("данные все равно обновил"+ result.message)
+          //  }
+        } else{
+            alert("Ошибка создания: ", result .error)
+        } 
     } catch (error) {
         alert("Ошибка выполнения: ", error)
     }

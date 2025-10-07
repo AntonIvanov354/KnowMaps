@@ -52,4 +52,8 @@ body {
     height: 100px;
     margin-left: 500px;
     margin-top: 150px;
+    opacity: 1;
+}
+.avatar{
+    opacity: 1;
 }

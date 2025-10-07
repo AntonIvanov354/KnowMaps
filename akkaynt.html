@@ -53,12 +53,12 @@
   <!--  <button onclick="window.location.href=`vxod.html`">Вход</button>
     <button onclick="window.location.href=`reg.html`">Регистрация</button>-->
 <main>
-    <div class="avatar">
+    <div class="avatar" id="avatar_profil">
     <img onclick="selectFile()" src="./foto/profil.png" alt="аватарка" class="sama_avatar">
     <input type="file" id="avatar_file" style="display: none;" onchange="fileSelect(this.files)">
     </div>
-    <p onclick="window.location.href='vxod.html'" style="color: white;">KnowMap1</p>
-    <p onclick="window.location.href='reg.html'" style="color: white;">KnowMap2</p>
+    <p onclick="window.location.href='vxod.html'" id="button_entrance" style="color: white; opacity: 0; ">Вход</p>
+    <p onclick="window.location.href='reg.html'" id="button_register" style="color: white; opacity: 0; ">Регистрация</p>
 </main>
 
 </body>

@@ -68,12 +68,8 @@
         // Переключаем класс для первого окна регистрации
         okno_reg_3.classList.toggle("okno_reg_itog");
     });*/
-
-export const UserCookiId = JSON.parse(localStorage.getItem("user") || "null")
-
+//export default printIdCooki
 document.addEventListener("DOMContentLoaded", async function(){
-    // const id_us = UserCookiId.id;
-    //export default id_us
 
     const button =  document.getElementById("button"); // Кнопка для переключения
     const okno_reg_2 = document.getElementById("okno_reg_2"); // Второе окно регистрации
@@ -81,6 +77,7 @@ document.addEventListener("DOMContentLoaded", async function(){
     const itog_reg_div2 = document.getElementById("itog_reg_div"); // Итоговое окно регистрации
 
     const url = "http://localhost:8000/api/register"
+    
 
     button.addEventListener("click", async function(){
         
@@ -132,21 +129,19 @@ document.addEventListener("DOMContentLoaded", async function(){
         
         const windowRegEmail = document.getElementById("window_email_reg").value
         const windowRegPassword =  document.getElementById("window_password_reg").value
-        const windowRegPasswordCheck =  document.getElementById("window_password_reg_chek").value
-        const windowRegUserName =  document.getElementById("window_user_name_reg").value
+        const windowRegPasswordCheck =  document.getElementById("window_user_name_reg").value
+
 
         const newuser = {
             email: windowRegEmail ,
             password: windowRegPassword ,
-            password_check: windowRegPasswordCheck,
-            name: windowRegUserName,
-            us_id: "1234"
+            password_check: windowRegPasswordCheck
         }
         if(windowRegPassword != windowRegPasswordCheck){
             alert("Пароли не совпадают")
             return;
         }
-        if (!windowRegEmail || !windowRegPassword || !windowRegPasswordCheck || !windowRegUserName){
+        if (!windowRegEmail || !windowRegPassword || !windowRegPasswordCheck){
             alert("Ошибка, заполнены не все поля!")
         }
         try{
@@ -161,21 +156,20 @@ document.addEventListener("DOMContentLoaded", async function(){
                 if(result.data.user){
                     alert(`Пользователь ${result.data.user.name} ${result.data.user.email}`)
                 }
+                if(result.data.user.cooki !== null){
 
-                if(UserCookiId !== result.data.user.cooki){
-                    localStorage.setItem("user", JSON.stringify({
-                        id: result.data.user.cooki,
-                        name: result.data.user.name,
-                        email: result.data.user.email
-                    }));
-                } else{
-                    alert("A")
-                };
+                    localStorage.setItem("idcooki", JSON.stringify({
+                        id: result.data.user.cooki
+                }))
 
-                if(UserCookiId !== null){
-                    alert(UserCookiId.id)
-                }
+                const printCooki = await JSON.parse(localStorage.getItem("idcooki") || '{"id": null}');
+                alert("Айди cooki"+ result.data.user.name + ": " + printCooki.id)
+                window.PrintIdglobal = printCooki.id
 
+            }else{
+                alert("Ошибка, Сервер не вернул id cooki!")
+                return;
+            }
                 okno_reg_2.classList.toggle("okno_reg_3");
                 itog_reg_div2.classList.toggle("itog_reg_div2");
                 okno_reg_3.classList.toggle("okno_reg_itog");
