@@ -1,0 +1,68 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+  <title>Динамическое создание ссылки</title>
+</head>
+<body>
+
+  <div id="product-list">
+     Сюда будет вставлен HTML-код 
+  </div>
+
+  <script>
+    // Пример данных о товарах
+    const products = [
+      { id: '101', name: 'Кроссовки' },
+      { id: '102', name: 'Футболка' }
+    ];
+
+    const productListDiv = document.getElementById('product-list');
+
+    products.forEach(product => {
+      // Создание ссылки
+      const productLink = document.createElement('a');
+      productLink.href = `/products/${product.id}`;
+      productLink.textContent = product.name;
+
+      // Создание контейнера для товара
+      const productContainer = document.createElement('div');
+      productContainer.id = `product-${product.id}`;
+      productContainer.appendChild(productLink); // Добавление ссылки в контейнер
+
+      // Добавление контейнера в список
+      productListDiv.appendChild(productContainer);
+    });
+  </script>
+
+</body>
+</html>-->
+
+    try{
+        const itog = await Sending_a_file(url)
+
+        if(itog.success){
+            const id_file = await result.data.id.id_file
+            window.location.href = `glav.html/${id_file}`
+            const info_audio_file = {
+                id: id_file, name: fileName 
+            };
+
+            const adiouListDiv = document.getElementById("file_AudioLink");
+            
+            info_audio_file.forEach(info_audio_file => {
+                const AudioLink = document.createElement("a");
+                AudioLink.href = `/glav/${info_audio_file.id}`;
+                AudioLink.textContent = info_audio_file.name;
+
+                const AudioContainer = document.createElement("div");
+                AudioContainer.id = `audio-${info_audio_file}`;
+                AudioContainer.appendChild(AudioLink);
+
+                poduktList.appendChild(AudioContainer)
+            })
+            /**Нужно сделать так чтоб текст считывался, потом просто выводим его и все */
+        }
+    }
+    catch(error){
+      /**   в противном случае мы выводим ошибку */
+    }

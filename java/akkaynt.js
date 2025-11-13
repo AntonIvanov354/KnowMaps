@@ -216,4 +216,4 @@ document.addEventListener("DOMContentLoaded", async function(){
         console.log("ОШИБКА: ", error)
         alert("ОШИБКА: " + error.message)
     }
-})
+});
