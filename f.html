@@ -1,68 +1,50 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Динамическое создание ссылки</title>
+<title>Пример</title>
 </head>
 <body>
 
-  <div id="product-list">
-     Сюда будет вставлен HTML-код 
-  </div>
+<h1>Список товаров</h1>
 
-  <script>
-    // Пример данных о товарах
-    const products = [
-      { id: '101', name: 'Кроссовки' },
-      { id: '102', name: 'Футболка' }
-    ];
+<div id="product-list">
+  <!-- Здесь будут создаваться элементы с помощью JavaScript -->
+</div>
 
-    const productListDiv = document.getElementById('product-list');
+<script >
+  // Список товаров (в реальном приложении это могут быть данные с сервера)
+const products = [
+  { id: 1, name: 'Футболка', price: 1000 },
+  { id: 2, name: 'Джинсы', price: 3500 },
+  { id: 3, name: 'Кроссовки', price: 5000 }
+];
 
-    products.forEach(product => {
-      // Создание ссылки
-      const productLink = document.createElement('a');
-      productLink.href = `/products/${product.id}`;
-      productLink.textContent = product.name;
+// Получаем контейнер, куда будут добавляться элементы
+const productListContainer = document.getElementById('product-list');
 
-      // Создание контейнера для товара
-      const productContainer = document.createElement('div');
-      productContainer.id = `product-${product.id}`;
-      productContainer.appendChild(productLink); // Добавление ссылки в контейнер
+// Проходимся по каждому товару
+products.forEach(product => {
+  // Создаем новый элемент <a> для ссылки
+  const productLink = document.createElement('a');
 
-      // Добавление контейнера в список
-      productListDiv.appendChild(productContainer);
-    });
-  </script>
+  // Устанавливаем атрибут href с помощью id товара
+  productLink.href = `/product/${product.id}`; // Пример URL
+
+  // Устанавливаем текст ссылки
+  productLink.textContent = `Перейти к товару: ${product.name}`;
+
+  // Можно также создать и добавить другие элементы, например, <div> с классом
+  const productItem = document.createElement('div');
+  productItem.className = 'product-item'; // Пример класса
+
+  // Добавляем ссылку внутрь созданного <div>
+  productItem.appendChild(productLink);
+
+  // Добавляем созданный элемент в список товаров на странице
+  productListContainer.appendChild(productItem);
+});
+
+</script>
 
 </body>
-</html>-->
-
-    try{
-        const itog = await Sending_a_file(url)
-
-        if(itog.success){
-            const id_file = await result.data.id.id_file
-            window.location.href = `glav.html/${id_file}`
-            const info_audio_file = {
-                id: id_file, name: fileName 
-            };
-
-            const adiouListDiv = document.getElementById("file_AudioLink");
-            
-            info_audio_file.forEach(info_audio_file => {
-                const AudioLink = document.createElement("a");
-                AudioLink.href = `/glav/${info_audio_file.id}`;
-                AudioLink.textContent = info_audio_file.name;
-
-                const AudioContainer = document.createElement("div");
-                AudioContainer.id = `audio-${info_audio_file}`;
-                AudioContainer.appendChild(AudioLink);
-
-                poduktList.appendChild(AudioContainer)
-            })
-            /**Нужно сделать так чтоб текст считывался, потом просто выводим его и все */
-        }
-    }
-    catch(error){
-      /**   в противном случае мы выводим ошибку */
-    }
+</html>

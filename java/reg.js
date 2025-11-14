@@ -51,90 +51,23 @@
         }
     });
 });
-// Ждем, пока весь HTML-документ будет загружен и разобран
-<<<<<<< HEAD
-/*document.addEventListener("DOMContentLoaded", async function() {*/
-    /*// Получаем элементы из DOM по их ID
-=======
+// Ждем, пока весь HTML-документ будет загружен и разобран*/
 document.addEventListener("DOMContentLoaded", async function() {
     // Получаем элементы из DOM по их ID
->>>>>>> 33a604f1bf9641ac60c862ed6fa549676d03fa97
     const button = document.getElementById("button"); // Кнопка для переключения
     const okno_reg_2 = document.getElementById("okno_reg_2"); // Второе окно регистрации
     const okno_reg_3 = document.getElementById("okno_reg"); // Первое окно регистрации
     const itog_reg_div2 = document.getElementById("itog_reg_div"); // Итоговое окно регистрации
 
     // Добавляем обработчик события на кнопку
-<<<<<<< HEAD
-    button.addEventListener("click", function() {
-        // Переключаем класс для второго окна регистрации
-        okno_reg_2.classList.toggle("okno_reg_3");
-        // Переключаем класс для итогового окна регистрации
-        itog_reg_div2.classList.toggle("itog_reg_div2");
-        // Переключаем класс для первого окна регистрации
-        okno_reg_3.classList.toggle("okno_reg_itog");
-    });*/
-//export default printIdCooki
-document.addEventListener("DOMContentLoaded", async function(){
-
-    const button =  document.getElementById("button"); // Кнопка для переключения
-    const okno_reg_2 = document.getElementById("okno_reg_2"); // Второе окно регистрации
-    const okno_reg_3 = document.getElementById("okno_reg"); // Первое окно регистрации
-    const itog_reg_div2 = document.getElementById("itog_reg_div"); // Итоговое окно регистрации
-
-    const url = "http://localhost:8000/api/register"
-    
-
-    button.addEventListener("click", async function(){
-        
-
-        async function registerUser(url, options = {}) {
-            const defaulOptions = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-            };
-
-            const MergeOptions = {
-                ...defaulOptions,
-                ...options,
-                headers: {
-                    ...defaulOptions.headers,
-                    ...options.headers
-                },
-            };
-
-            if(options.body && typeof options.body == `object`){
-                MergeOptions.body = JSON.stringify(options.body)
-            }
-
-            try{
-                const response = await fetch(url, MergeOptions)
-
-                if(!response.ok){
-                    throw new Error(`HTTP ${response.status} ${response.statusText}`)
-                }
-                try{
-                    const data = await response.json()
-                    return {success: true, data, status: response.status}
-                } catch(jsonError) {
-                    const text = await response.json()
-                    return {success: true, data: text, status: response.status}
-                }
-            }
-            catch(error){
-                return{
-=======
     button.addEventListener("click", async function() {
-        /*    // Переключаем класс для второго окна регистрации
+          // Переключаем класс для второго окна регистрации
             okno_reg_2.classList.toggle("okno_reg_3");
             // Переключаем класс для итогового окна регистрации
             itog_reg_div2.classList.toggle("itog_reg_div2");
             // Переключаем класс для первого окна регистрации
             okno_reg_3.classList.toggle("okno_reg_itog");
-        });*/
+        });
 
         async function makeRequest(url, options = {}) {
             const defaultOptions = {
@@ -174,18 +107,16 @@ document.addEventListener("DOMContentLoaded", async function(){
 
             } catch(error){
                 return {
->>>>>>> 33a604f1bf9641ac60c862ed6fa549676d03fa97
                     success: false,
                     error: error.message,
                     status: error.status || 0
                 }
             }
         }
-<<<<<<< HEAD
         
         const windowRegEmail = document.getElementById("window_email_reg").value
         const windowRegPassword =  document.getElementById("window_password_reg").value
-        const windowRegPasswordCheck =  document.getElementById("window_user_name_reg").value
+        const windowRegPasswordCheck =  document.getElementById("window_user_password_replay_reg").value
 
 
         const newuser = {
@@ -201,7 +132,8 @@ document.addEventListener("DOMContentLoaded", async function(){
             alert("Ошибка, заполнены не все поля!")
         }
         try{
-            const result = await registerUser(url, {
+            //обозначить потом url
+            const result = await makeRequest(url, {
                 method: "POST",
                 body: newuser
             })
@@ -237,12 +169,10 @@ document.addEventListener("DOMContentLoaded", async function(){
             alert("Ошибка: " + error.message)
         }
     })
-})
-=======
 
-        const UserPassword = await document.getElementById("window_password").value
-        const UserPasswordReplay = await document.getElementById("window_password_replay").value
-        const UserEmail = await document.getElementById("window_email").value
+        const UserPassword = await document.getElementById("window_password_reg").value
+        const UserPasswordReplay = await document.getElementById("window_user_password_replay_reg").value
+        const UserEmail = await document.getElementById("window_email_reg").value
         if(UserPassword == UserPasswordReplay){
             const NewUser = {
                 password: UserPassword,
@@ -271,7 +201,3 @@ document.addEventListener("DOMContentLoaded", async function(){
         else{
             alert(`Error: Password ≠ Password replay`)
         }
-    });
-});
- 
->>>>>>> 33a604f1bf9641ac60c862ed6fa549676d03fa97
