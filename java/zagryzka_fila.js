@@ -6,12 +6,12 @@ document.getElementById("vibor-file").addEventListener("change", function(){
     const fileName = this.files[0] ? this.files[0].name : 'Вы не выбрали файл';
     alert('Выбранный файл: ' + fileName);*/
 
-document.addEventListener("DOMContentLoaded",  function(){
+document.addEventListener("DOMContentLoaded", async function(){
 
-url = "тут будет url сервера, но позже, пока нету(";
+url = "http://127.0.0.1:8000/abama";
 let Idfile = 1;
 const text_opisanie =  document.getElementById("text_opisanie");
-const text_file = document.getElementById("text_file");
+const text_file = document.getElementById("text_file")
 
 document.getElementById("fileOutput").addEventListener("click", function(){
 
@@ -30,32 +30,52 @@ document.getElementById("fileSelection").addEventListener("change", async functi
 
     const formData = new FormData();
 
-    formData.append("file", namefile);
+    formData.append("file", File);
     formData.append("description", `Загрузочный файл номер: ${Idfile}`);
     formData.append("Category", "audio");
-//Нужно создавать функицю
-    const result = await MakeRequest(url, {
-        method: "POST", 
+
+    const text_file = document.getElementById("text_file");
+    try{
+        const response = await fetch(url, {
+        method: "POST",
         body: formData
-    });
-    if(result.success){
+
+        });
+        if(response.ok){
+        const result = await response.json();
+        console.log("ответ сервера: ", result )
 
         let DataBaseFile = {
-        id: result.data.file.id, 
-        namefile: result.data.file.namefile, 
-        contentfile: result.data.file.ontentfile
+        id: Idfile, 
+        namefile: result.data.namefile, 
+        contentfile: result.data.contentfile
         };
 
+
         const file_content =  document.createElement("pre");
-        file_content.textContent = DataBaseFile.id;
+        file_content.textContent = DataBaseFile.contentfile;
 
         file_content.classList.add("text_file");
         
+        text_opisanie.innerHTML = '';
         text_file.appendChild(file_content);
 
         text_opisanie.style.display = "none";
-        text_file.style.display = "block";
-    }
+        text_file.style.display = "block";     
+
+        }else{
+        const result = await response.json();
+        alert(`Ошибка конвертации: ${result.status} || ${errorResult.status}`);
+        
+        }
+    } catch(error){
+        alert("Ошибка в выводе текста на сайт!")
+    }  
+//Нужно создавать функицю
+   /** const result = await MakeRequest(url, options = {
+        method: "POST", 
+        body: formData
+    }); */
     //async function SendingFile(url, options) {
         //const defaultOptions = await fetch (url, {
           //  method: "POST",

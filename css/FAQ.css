@@ -112,7 +112,7 @@ body {
     position: relative;
     z-index: 0;
 }
-.otvet_1_zamena::before , .otvet_2_zamena::before, .otvet_3_zamena::before, .otvet_4_zamena::before, .otvet_5_zamena::before{
+.otvet_1_zamena::before{
     content:'';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
@@ -120,12 +120,68 @@ body {
     background-size: 400%;
     z-index: -1;
     height: 4px;
-    width: 105px;
+    width: 410px;
     animation: glowing 20s linear infinite;
     opacity: 1;
     transition: opacity .3s ease-in-out;
     border-radius: 10px;
 
+}
+ .otvet_2_zamena::before{
+    content:'';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: 100%;
+    background-size: 400%;
+    z-index: -1;
+    height: 4px;
+    width: 500px;
+    animation: glowing 20s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+ }
+ .otvet_3_zamena::before{
+    content:'';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: 100%;
+    background-size: 400%;
+    z-index: -1;
+    height: 4px;
+    width: 435px;
+    animation: glowing 20s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px; 
+ }
+.otvet_4_zamena::before{
+    content:'';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: 100%;
+    background-size: 400%;
+    z-index: -1;
+    height: 4px;
+    width: 235px;
+    animation: glowing 20s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+.otvet_5_zamena::before{
+    content:'';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: 100%;
+    background-size: 400%;
+    z-index: -1;
+    height: 4px;
+    width: 330px;
+    animation: glowing 20s linear infinite;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
 }
 /*.otvet_1:hover::before , .otvet_2:hover::before, .otvet_3:hover::before, .otvet_4:hover::before, .otvet_5:hover::before{
     opacity: 1;

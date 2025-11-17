@@ -91,7 +91,7 @@ body {
     position: relative; /* Позиционирование относительно родителя */
     z-index: 0; /* Установка z-index */
     border-radius: 10px; /* Скругление углов */
-    left: 40%;
+    align-items: center;
 }
 
 /* Псевдоэлемент перед кнопкой для эффекта свечения */
@@ -172,4 +172,5 @@ body {
     padding: 10px;
     text-align: left;
     font-family: 'Courier New', Courier, monospace;
+    cursor: default;
 }
