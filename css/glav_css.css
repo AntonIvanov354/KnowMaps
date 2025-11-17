@@ -65,9 +65,10 @@ body {
     transform: translate(-50%, -50%); /* Центрируем текст по обоим осям */
     color: white; /* Цвет текста белый для контраста с фоном видео */
     padding: 10px; /* Отступы вокруг текста для улучшения восприятия */
-    font-size: 24px; /* Размер шрифта для текста описания */
+    font-size: 150%; /* Размер шрифта для текста описания */
     text-align: left; /* Центрирование текста внутри блока описания */
     font-family:'Courier New', Courier, monospace;
+    display: block;
 }
 /* Указание курсора по умолчанию для элемента с классом text_opisanie при наведении */
 .text_opisanie:hover {
@@ -90,6 +91,7 @@ body {
     position: relative; /* Позиционирование относительно родителя */
     z-index: 0; /* Установка z-index */
     border-radius: 10px; /* Скругление углов */
+    left: 35%;
 }
 
 /* Псевдоэлемент перед кнопкой для эффекта свечения */
@@ -150,4 +152,22 @@ body {
     text-align: center;
     cursor: default;
     font-family: 'Courier New', Courier, monospace;
+}
+.main_text_file{
+    display: flex;
+    flex-direction: column;
+}
+.text_file{
+    color: white;
+    text-align: 150%;
+    overflow-y: auto;
+    flex: 1;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    display: none;
 }

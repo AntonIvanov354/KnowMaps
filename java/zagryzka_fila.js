@@ -7,8 +7,12 @@ document.getElementById("vibor-file").addEventListener("change", function(){
     alert('Выбранный файл: ' + fileName);*/
 
 document.addEventListener("DOMContentLoaded",  function(){
-url = "тут будет url сервера, но позже, пока нету("
-let Idfile = 1
+
+url = "тут будет url сервера, но позже, пока нету(";
+let Idfile = 1;
+const text_opisanie =  document.getElementById("text_opisanie");
+const text_file = document.getElementById("text_file");
+
 document.getElementById("fileOutput").addEventListener("click", function(){
 
     document.getElementById("fileSelection").click();
@@ -29,9 +33,41 @@ document.getElementById("fileSelection").addEventListener("change", async functi
     Idfile += 1
     let DataBaseFile = [
     {id: Idfile, NameFile: NameFile}
-    ]
+    ];
 
-    try{
+    /**const FormData = new FormData
+
+    FormData.append("file", NameFile);
+
+    FormData.append("description", `Загрузочный файл номер: ${DataBaseFile.id}`);
+    FormData.append("Category", "audio");
+
+   /**Потом нужно будет раскомитить 
+    * const result = await MakeRequest(url, {
+        methood: "POST",
+        body: FormData
+    }); */
+
+    text_opisanie.style.display = "none";
+    text_file.style.display = "block";
+
+    const file_content =  document.createElement("p")
+    file_content.textContent = "влавыалтавлопрвопрлваопо"
+
+    file_content.classList.add("text_file");
+    
+    file_content.appendChild(textinfile)
+    //async function SendingFile(url, options) {
+        //const defaultOptions = await fetch (url, {
+          //  method: "POST",
+            //body: FileSending
+       // })
+    //}
+
+   // try{
+     //   const OtvetServer = SendingFile{url, options{
+
+       // }} 
     /** Крч код правильный 50 на 50, но и одновремено не правильный вообще. крч иди нахуй сиди думай
        // const itog = await SendingAFile(url)
         alert("A")
@@ -53,7 +89,7 @@ document.getElementById("fileSelection").addEventListener("change", async functi
 
         }) 
         //}
-    }
+    
     catch(error){
         alert("ошибка")
     } */
@@ -68,12 +104,6 @@ document.getElementById("fileSelection").addEventListener("change", async functi
             Вывод окна ошибки, обязательно 
         }
     }
-    async function SendingTheFileToTheServer(url) {
-        const Sending = await fetch (url, {
-            method: "POST",
-            body: FileSending
-        })
-    }
- */
+ *///}
     });
 });

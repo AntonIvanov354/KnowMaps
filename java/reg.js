@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", async function() {
             const defaultOptions = {
                 method: "GET",
                 headers: {
-                    "Content-Type": "applocation/json",
-                    "Accept": "applocation/json"
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
                 }
             };
 
