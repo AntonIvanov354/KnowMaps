@@ -91,7 +91,7 @@ body {
     position: relative; /* Позиционирование относительно родителя */
     z-index: 0; /* Установка z-index */
     border-radius: 10px; /* Скругление углов */
-    left: 35%;
+    left: 40%;
 }
 
 /* Псевдоэлемент перед кнопкой для эффекта свечения */
@@ -158,6 +158,9 @@ body {
     flex-direction: column;
 }
 .text_file{
+    height: 100px;
+    width: 100%;
+    height: 250px;
     color: white;
     text-align: 150%;
     overflow-y: auto;
@@ -169,5 +172,4 @@ body {
     padding: 10px;
     text-align: left;
     font-family: 'Courier New', Courier, monospace;
-    display: none;
 }

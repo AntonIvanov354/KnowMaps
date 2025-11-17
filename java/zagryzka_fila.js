@@ -20,43 +20,42 @@ document.getElementById("fileOutput").addEventListener("click", function(){
 document.getElementById("fileSelection").addEventListener("change", async function(){
     const TheFileItself = document.getElementById("fileSelection")
     const File = TheFileItself.files[0]
-    const NameFile = this.files[0].name
-
-    const FileSending = new FormData();
-    FileSending.append("file", File);
-    FileSending.append("filename", File.name);
+    const namefile = this.files[0].name
 
     if(!File){
         alert ("Вы не выбрали файл!");
         return;
     } 
     Idfile += 1
-    let DataBaseFile = [
-    {id: Idfile, NameFile: NameFile}
-    ];
 
-    /**const FormData = new FormData
+    const formData = new FormData();
 
-    FormData.append("file", NameFile);
+    formData.append("file", namefile);
+    formData.append("description", `Загрузочный файл номер: ${Idfile}`);
+    formData.append("Category", "audio");
+//Нужно создавать функицю
+    const result = await MakeRequest(url, {
+        method: "POST", 
+        body: formData
+    });
+    if(result.success){
 
-    FormData.append("description", `Загрузочный файл номер: ${DataBaseFile.id}`);
-    FormData.append("Category", "audio");
+        let DataBaseFile = {
+        id: result.data.file.id, 
+        namefile: result.data.file.namefile, 
+        contentfile: result.data.file.ontentfile
+        };
 
-   /**Потом нужно будет раскомитить 
-    * const result = await MakeRequest(url, {
-        methood: "POST",
-        body: FormData
-    }); */
+        const file_content =  document.createElement("pre");
+        file_content.textContent = DataBaseFile.id;
 
-    text_opisanie.style.display = "none";
-    text_file.style.display = "block";
+        file_content.classList.add("text_file");
+        
+        text_file.appendChild(file_content);
 
-    const file_content =  document.createElement("p")
-    file_content.textContent = "влавыалтавлопрвопрлваопо"
-
-    file_content.classList.add("text_file");
-    
-    file_content.appendChild(textinfile)
+        text_opisanie.style.display = "none";
+        text_file.style.display = "block";
+    }
     //async function SendingFile(url, options) {
         //const defaultOptions = await fetch (url, {
           //  method: "POST",
@@ -79,7 +78,7 @@ document.getElementById("fileSelection").addEventListener("change", async functi
 
             FileList.href = `glav/${DataBaseFile.id}`;
 
-            FileList.textContent = `Перейти к айдио файлу: ${DataBaseFile.NameFile}`;
+            FileList.textContent = `Перейти к айдио файлу: ${DataBaseFile.namefile}`;
 
             const fileItem = document.createElement("div");
             fileItem.className = `file-item`;

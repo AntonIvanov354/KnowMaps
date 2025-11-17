@@ -1,23 +1,38 @@
+<div class="container">
+  <div class="scrollable-content">
+    <pre>
+        /
+        /
+        /
+        /
+        /
+        /
+        /
+        /
+        /
+        /
+        /
+        /
+        /
+        /
+        /
+        //
+        /
+        /
+        
+    </pre>
+  </div>
+</div>
+
 <style>
-.dynamic-style {
-    font-family: Arial, sans-serif;
-    color: green;
-    margin: 10px 0;
+.container {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollable-content {
+  flex: 1;
+  overflow-y: auto;
 }
 </style>
-
-<div id="output"></div>
-
-<script>
-const output = document.getElementById('output');
-
-// Создаем элемент
-const message = document.createElement('p');
-message.textContent = '!';
-
-// Добавляем CSS класс
-message.classList.add('dynamic-style');
-
-// Добавляем в DOM
-output.appendChild(message);
-</script>
